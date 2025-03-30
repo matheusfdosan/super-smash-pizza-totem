@@ -1,0 +1,140 @@
+#initial-page {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../assets/bg.png");
+  background-color: var(--bg-color);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#white-border {
+  width: 80%;
+  height: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+#initial-page > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+#initial-page > header > img:nth-child(1) {
+  width: 10rem;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+#initial-page > header > img:nth-child(2) {
+  width: 20rem;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+#initial-page > header > img:nth-child(3) {
+  width: 7rem;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+#initial-page > main {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  font-family: var(--pixelify-sans);
+  color: var(--border-text-color);
+  margin-top: 7rem;
+}
+
+#initial-page > main > p {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+#initial-page > main > p:nth-child(2) {
+  font-size: 4rem;
+}
+
+#initial-page > main > #choose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15rem;
+  margin-top: 7rem;
+}
+
+#initial-page > main > #choose div {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  cursor: pointer;
+}
+
+
+
+#initial-page > main > #choose div > img {
+  width: 35rem;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+#eat-here > img {
+  animation: floating 2s infinite alternate ease-out;
+}
+
+#eat-out > img {
+  animation: floating 2s 1s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+#initial-page > main > #choose div > p {
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+#initial-page > footer {
+  position: absolute;
+  bottom: 0;
+}
+
+#initial-page > footer > img {
+  width: 100%;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+
+
+@keyframes floating {
+  from {
+    transform: translateY(5rem);
+  }
+
+  to {
+    transform: translateY(0rem);
+
+  }
+}

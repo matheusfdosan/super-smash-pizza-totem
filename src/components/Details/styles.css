@@ -1,0 +1,102 @@
+#details {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: #00000070;
+  animation: retroSpawn 0.4s ease-in;
+}
+
+#details > #item-detail {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-color);
+  border-top: var(--dashed-border);
+  padding: 5rem;
+  gap: 3rem;
+  width: 100vw;
+  justify-content: space-between;
+}
+
+#details > #item-detail > #left-side > #basic-info {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: var(--border-text-color);
+  font-size: 2rem;
+}
+
+#details > #item-detail > #left-side > #basic-info > img {
+  width: 15rem;
+}
+
+#details > #item-detail > #left-side > #basic-info > #name-price > p {
+  color: var(--select-price-color);
+  font-size: 2.6rem;
+  margin-top: 2rem;
+}
+
+#details > #item-detail > #left-side > #description {
+  margin-top: 4rem;
+}
+
+#details > #item-detail > #left-side > #description > span {
+  display: block;
+  font-size: 2.6rem;
+  color: #aeff4c;
+  width: 48rem;
+}
+
+#details > #item-detail > #left-side > #description > p {
+  font-size: 2.6rem;
+  color: var(--border-text-color);
+  margin-top: 2rem;
+  width: 48rem;
+}
+
+#details > #item-detail > #right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20rem;
+}
+
+#details > #item-detail > #right-side > button {
+  border: var(--dashed-border);
+  font-family: var(--pixelify-sans);
+  font-size: 2.4rem;
+  padding: 0.5rem 1.8rem;
+  background-color: transparent;
+  color: var(--border-text-color);
+  cursor: pointer;
+  transition: transform 200ms ease;
+}
+
+#details > #item-detail > #right-side > button:last-child {
+  border-color: var(--button-add-color);
+  color: var(--button-add-color);
+}
+
+@keyframes retroSpawn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(20px);
+    filter: blur(2px) brightness(1.5); /* Brilho inicial como em teletransporte */
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1) translateY(-5px);
+    filter: blur(0) brightness(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: none;
+  }
+}

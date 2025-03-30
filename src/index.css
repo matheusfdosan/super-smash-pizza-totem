@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+:root {
+  --pixelify-sans: "Pixelify Sans", sans-serif;
+  --jersey: "Jersey 15", sans-serif;
+  --bg-color: #1e1e1e;
+  --border-text-color: #D9D9D9;
+  --button-add-color: #32E0FF;
+  --select-price-color: #FFE032;
+  --desc-payment-color: #3AFF3A;
+  --cancel-remove-color: #FF5C5C;
+  --dashed-border: dashed .2rem var(--border-text-color);
+}
+
+html {
+  font-size: 62.5%;
+  font-family: var(--pixelify-sans);
+  /* cursor: url("./assets//cursor.svg"); */
+}
+
+html,
+body {
+  height: 100vh;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  /* cursor: url("./assets//cursor.svg"), auto; */
+}
+
+body {
+  font-size: 1.6rem;
+}

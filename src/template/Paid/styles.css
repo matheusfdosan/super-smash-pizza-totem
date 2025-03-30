@@ -1,0 +1,57 @@
+#paid-page {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../assets/order-bg.png");
+  background-color: var(--bg-color);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#paid-page > img {
+  width: 20rem;
+  display: block;
+  padding: 2rem 0;
+  margin: auto;
+}
+
+#paid-page > h2 {
+  font-size: 4rem;
+  color: var(--border-text-color);
+  display: block;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+#paid-page > p {
+  font-size: 3rem;
+  color: var(--border-text-color);
+  display: block;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+#paid-page > p > span {
+  font-size: 3rem;
+  color: var(--desc-payment-color);
+  text-align: center;
+  margin-top: 2rem;
+}
+
+#paid-page > img#mario-jackson {
+  width: 40rem;
+}
+
+#paid-page > button {
+  border: var(--dashed-border);
+  font-family: var(--pixelify-sans);
+  margin: auto;
+  display: block;
+  padding: 0.5rem 1.8rem;
+  font-size: 4rem;
+  border-color: var(--select-price-color);
+  background-color: transparent;
+  margin-top: 4rem;
+  color: var(--select-price-color);
+  cursor: pointer;
+  transition: transform 200ms ease;
+}

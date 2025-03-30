@@ -1,0 +1,27 @@
+.Item {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--border-text-color);
+  gap: 2.5rem;
+}
+
+.Item p {
+  font-size: 2rem;
+}
+
+.Item img {
+  width: 90%;
+  height: 18rem;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+.Item:hover {
+  outline: dashed 0.2rem var(--select-price-color);
+}

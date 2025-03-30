@@ -1,0 +1,45 @@
+.item > div {
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  border: var(--dashed-border);
+  border-color: var(--select-price-color);
+  padding: 1rem 0;
+}
+
+.item > div > img {
+  height: 13rem;
+}
+
+.item > div > p {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.6rem;
+  color: var(--border-text-color);
+  height: 9.3rem;
+}
+
+.item > div > span {
+  color: var(--button-add-color);
+  font-size: 2.6rem;
+}
+
+.item > button {
+  width: 100%;
+  border: var(--dashed-border);
+  border-color: var(--cancel-remove-color);
+  color: var(--cancel-remove-color);
+  background-color: transparent;
+  font-size: 2.4rem;
+  padding: 1rem 0;
+  font-family: var(--pixelify-sans);
+  cursor: pointer;
+  border-top: none;
+}
+
+.item > button:hover {
+  background-color: #ff5c5c2d;
+
+}

@@ -1,0 +1,109 @@
+#order {
+  background-image: url("../../assets/order-bg.png");
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-color);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#order > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  padding: 2rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+#order > header > img {
+  width: 13rem;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+#order > header > h2 {
+  color: var(--border-text-color);
+  font-size: 4rem;
+}
+
+#order > header > button {
+  border: var(--dashed-border);
+  font-family: var(--pixelify-sans);
+  font-size: 2.4rem;
+  padding: 0.5rem 1.8rem;
+  background-color: transparent;
+  color: var(--border-text-color);
+  cursor: pointer;
+}
+
+#order > main {
+  border-top: var(--dashed-border);
+  height: 60vh;
+  border-bottom: var(--dashed-border);
+  width: 100%;
+  padding: 4rem 0;
+  overflow: scroll;
+}
+
+#order > main > .container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(10rem, auto));
+  justify-content: center;
+  gap: 2rem;
+}
+
+#order > footer {
+  width: 100%;
+  padding: 7rem;
+}
+
+#order > footer > .container {
+  width: 100%;
+}
+
+#order > footer > .container > #total {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: var(--dashed-border);
+  margin-bottom: 3rem;
+}
+
+#order > footer > .container > #total p {
+  font-size: 4rem;
+  font-family: var(--jersey);
+  color: var(--border-text-color);
+}
+
+#order > footer > .container > #total > p:last-child {
+  font-family: var(--jersey);
+  color: var(--button-add-color);
+}
+
+#order > footer > .container > button {
+  border: var(--dashed-border);
+  border-color: var(--desc-payment-color);
+  font-family: var(--pixelify-sans);
+  font-size: 3.4rem;
+  padding: 0.5rem 1.8rem;
+  background-color: transparent;
+  color: var(--desc-payment-color);
+  cursor: pointer;
+  display: block;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  margin: 0 0 0 auto;
+}
+
+#empty {
+  margin: auto;
+  text-align: center;
+  font-size: 4rem;
+  display: block;
+  color: var(--border-text-color);
+}

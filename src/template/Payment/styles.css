@@ -1,0 +1,154 @@
+#Payment {
+  background-image: url("../../assets/order-bg.png");
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-color);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#Payment header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10rem;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 4rem;
+  padding: 2rem 5rem;
+  position: relative;
+  z-index: 1;
+  border-bottom: var(--dashed-border);
+}
+
+#Payment h1 {
+  font-size: 4.5rem;
+  color: var(--border-text-color);
+}
+
+#Payment > header > img {
+  width: 12.9rem;
+  height: 12.9rem;
+}
+
+#Input_name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  gap: 2.5rem;
+  color: var(--border-text-color);
+  font-size: 4rem;
+  margin-bottom: 8rem;
+}
+
+#Input_name input {
+  background-color: transparent;
+  border: none;
+  font-size: 4rem;
+  font-family: var(--pixelify-sans);
+  color: var(--border-text-color);
+  text-align: center;
+  border-bottom: dashed #d9d9d98b 0.3rem;
+  text-transform: capitalize;
+  outline: none;
+
+}
+
+#Payment_methods {
+  width: 100%;
+}
+
+#Payment_methods > h2 {
+  display: block;
+  margin: auto;
+  text-align: center;
+  color: var(--border-text-color);
+  margin-bottom: 4rem;
+  font-size: 4rem;
+}
+
+#methods {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.pay-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  border: var(--dashed-border);
+  border-color: #32e0ff;
+  padding: 2rem;
+  width: 19rem;
+  cursor: pointer;
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+
+.pay-form:hover {
+  border-color: var(--desc-payment-color);
+}
+
+.pay-form > input {
+  display: none;
+}
+
+.pay-form > img {
+  width: 10rem;
+}
+
+.pay-form > p {
+  font-size: 4rem;
+  color: var(--border-text-color);
+}
+
+#message {
+  display: block;
+  margin: 3rem auto;
+  text-align: center;
+  font-size: 3rem;
+  color: var(--cancel-remove-color);
+}
+
+#options-btns {
+  margin-top: 10rem;
+  display: flex;
+  gap: 4rem;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#options-btns > button, #options-btns > div{
+  border: var(--dashed-border);
+  font-family: var(--pixelify-sans);
+  font-size: 2.4rem;
+  padding: 0.5rem 1.8rem;
+  background-color: transparent;
+  color: var(--border-text-color);
+  cursor: pointer;
+  transition: transform 200ms ease;
+}
+
+#options-btns > button:hover, #options-btns > div:hover {
+  transform: scale(1.1);
+}
+
+
+#options-btns > button:first-child {
+  font-size: 4.5rem;
+  padding: 1rem 3rem;
+  border-color: var(--desc-payment-color);
+  color: var(--desc-payment-color);
+}
+
+#options-btns > div:last-child {
+    font-size: 4.5rem;
+  padding: 1rem 3rem;
+  border-color: var(--cancel-remove-color);
+  color: var(--cancel-remove-color);
+}

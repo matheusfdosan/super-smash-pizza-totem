@@ -1,0 +1,16 @@
+#loading {
+  background-image: url("../../assets/order-bg.png");
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-color);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#loading > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70rem;
+}

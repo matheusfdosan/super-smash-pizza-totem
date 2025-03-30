@@ -1,0 +1,11 @@
+.Menu {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(100px, auto));
+  align-items: flex-start;
+  gap: 4rem;
+  padding: 4rem;
+  height: 70vh;
+  flex: 1;
+  overflow: hidden;
+  overflow-y: scroll;
+}
