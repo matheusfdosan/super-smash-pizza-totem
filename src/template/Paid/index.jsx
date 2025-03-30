@@ -3,6 +3,7 @@ import "./styles.css"
 
 import logo from "../../assets/super-smash-pizza.svg"
 import marioJackson from "../../assets/marioJackson.gif"
+import TranscriptionTool from "../../components/TranscriptionTool"
 
 function Paid() {
   const [username, setUsername] = useState("")
@@ -10,7 +11,7 @@ function Paid() {
   useEffect(() => {
     const getUsername = localStorage.getItem("username")
     setUsername(getUsername)
-  }, []);
+  }, [])
 
   const handleCloseOrder = () => {
     localStorage.setItem("order", [])
@@ -18,17 +19,23 @@ function Paid() {
     document.location.href = "/"
   }
 
-  return <div id="paid-page">
-    <img src={logo} alt="logo" />
+  return (
+    <div id="paid-page">
+      <img src={logo} alt="logo" />
 
-    <h2>Pedido Realizado com Sucesso!</h2>
-    <p>Aguarde até seu pedido estar pronto</p>
-    <p><span>{username} </span>enquanto isso: </p>
+      <h2>Pedido Realizado com Sucesso!</h2>
+      <p>Aguarde até seu pedido estar pronto</p>
+      <p>
+        <span>{username} </span>enquanto isso:{" "}
+      </p>
 
-    <img id="mario-jackson" src={marioJackson} alt="mario-jackson-dancing" />
+      <img id="mario-jackson" src={marioJackson} alt="mario-jackson-dancing" />
 
-    <button onClick={handleCloseOrder}>Fechar</button>
-  </div>
+      <TranscriptionTool />
+
+      <button onClick={handleCloseOrder}>Fechar</button>
+    </div>
+  )
 }
 
 export default Paid

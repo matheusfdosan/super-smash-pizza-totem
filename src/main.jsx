@@ -13,7 +13,7 @@ import Loading from "./components/Loading"
 import { SelectedItemProvider } from "./utils/SelectedItemContext"
 
 createRoot(document.getElementById("root")).render(
-  <SelectedItemProvider> 
+  <SelectedItemProvider>
     <Router>
       <Suspense fallback={<Loading />}>
         <Routes>

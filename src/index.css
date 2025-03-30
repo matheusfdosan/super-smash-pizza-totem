@@ -20,7 +20,6 @@
 html {
   font-size: 62.5%;
   font-family: var(--pixelify-sans);
-  /* cursor: url("./assets//cursor.svg"); */
 }
 
 html,
@@ -29,7 +28,6 @@ body {
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  /* cursor: url("./assets//cursor.svg"), auto; */
 }
 
 body {
