@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import "./styles.css"
 import logo from "../../assets/super-smash-pizza.svg"
 import OnCart from "../../components/OnCart"
+import audioFile from "../../assets/audios/order.mp3"
 
 function Order() {
   const [items, setItems] = useState([])
   const [total, setTotal] = useState(0)
+  const audioRef = useRef(null)
 
   const parsePrice = (price) => {
     const parsed = Number(price.replace("R$ ", "").replace(",", "."))
@@ -13,15 +15,31 @@ function Order() {
   }
 
   useEffect(() => {
+    if (!localStorage.getItem("order")) {
+      JSON.parse(localStorage.setItem("order", JSON.stringify([])))
+    }
+
     const storedOrder = JSON.parse(localStorage.getItem("order")) || []
     setItems(storedOrder)
 
     const initialTotal = storedOrder.reduce((acc, item) => {
       const price = parsePrice(item.price)
-      console.log(price);
+      console.log(price)
       return acc + price
     }, 0)
     setTotal(initialTotal)
+
+    if (!JSON.parse(localStorage.getItem("sessions")).includes("order")) {
+      localStorage.setItem("sessions", JSON.stringify(["catalog", "order"]))
+      
+      if (audioRef.current) {
+        setTimeout(() => {
+          audioRef.current.play().catch((error) => {
+            console.log("Erro ao reproduzir o áudio:", error)
+          })
+        }, 2000)
+      }
+    }
   }, [])
 
   useEffect(() => {
@@ -87,6 +105,8 @@ function Order() {
           <button onClick={handlePayment}>Pagar</button>
         </div>
       </footer>
+
+      <audio ref={audioRef} src={audioFile} muted={false} />
     </div>
   )
 }

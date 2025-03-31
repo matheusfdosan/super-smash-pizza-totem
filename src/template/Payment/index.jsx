@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import "./styles.css"
 
 import card from "../../assets/card.svg"
@@ -6,11 +6,13 @@ import pix from "../../assets/pix.svg"
 import money from "../../assets/money.svg"
 
 import logo from "../../assets/super-smash-pizza.svg"
+import audioFile from "../../assets/audios/payment.mp3"
 
 function Payment() {
   const [method, setMethod] = useState("")
   const [total, setTotal] = useState(0)
   const [msg, setMsg] = useState("")
+  const audioRef = useRef(null)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -36,6 +38,18 @@ function Payment() {
     }, 0)
 
     setTotal(newTotal)
+
+    if (!JSON.parse(localStorage.getItem("sessions")).includes("payment")) {
+      localStorage.setItem("sessions", JSON.stringify(["catalog", "order", "payment"]))
+      
+      if (audioRef.current) {
+        setTimeout(() => {
+          audioRef.current.play().catch((error) => {
+            console.log("Erro ao reproduzir o áudio:", error)
+          })
+        }, 2000)
+      }
+    }
   }, [])
 
   return (
@@ -129,6 +143,8 @@ function Payment() {
             </div>
           </div>
         </form>
+
+        <audio ref={audioRef} src={audioFile} muted={false} />
       </div>
     </>
   )

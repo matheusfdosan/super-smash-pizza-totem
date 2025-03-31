@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useRef, useState } from "react"
 import "./styles.css"
 
 import logo from "../../assets/super-smash-pizza.svg"
@@ -9,6 +9,7 @@ import Drink from "../../assets/Drink_img.svg"
 import Combo from "../../assets/Combo_img.svg"
 import Dessert from "../../assets/Desserts_img.svg"
 import Accompaniment from "../../assets/accompaniment.svg"
+import audioFile from "../../assets/audios/catalog.mp3"
 
 import {
   pizzas,
@@ -29,6 +30,25 @@ export default function Catalog() {
   const [message, setMessage] = useState(false)
 
   const { data } = useContext(SelectedItemContext)
+  const audioRef = useRef(null)
+
+  useEffect(() => {
+    if (!localStorage.getItem("sessions")) {
+      localStorage.setItem("sessions", [])
+    }
+
+    if (!JSON.parse(localStorage.getItem("sessions")).includes("catalog")) {
+      localStorage.setItem("sessions", JSON.stringify(["catalog"]))
+      
+      if (audioRef.current) {
+        setTimeout(() => {
+          audioRef.current.play().catch((error) => {
+            console.log("Erro ao reproduzir o áudio:", error)
+          })
+        }, 2000)
+      }
+    }
+  }, [])
 
   const handleAddItem = () => {
     if (!localStorage.getItem("order")) {
@@ -52,7 +72,7 @@ export default function Catalog() {
 
     setTimeout(() => {
       setMessage(false)
-    }, 900);
+    }, 900)
   }
 
   return (
@@ -161,9 +181,10 @@ export default function Catalog() {
         </div>
       </div>
 
-      {message && <LittleMessage value="Item Adicionado"/>}
-
+      {message && <LittleMessage value="Item Adicionado" />}
       {showDetails && <Details isDetailsOn={setShowDetails} />}
+
+      <audio ref={audioRef} src={audioFile} muted={false} />
     </div>
   )
 }

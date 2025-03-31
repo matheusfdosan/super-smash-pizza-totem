@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import "./styles.css"
 
 import logo from "../../assets/super-smash-pizza.svg"
@@ -8,8 +8,21 @@ import whiteBorderBg from "../../assets/white-border-bg.svg"
 import bigPizza from "../../assets/big-pizza.svg"
 import pizzaBox from "../../assets/pizza-box.svg"
 import footerLine from "../../assets/footer-line.svg"
+import audioFile from "../../assets/audios/initial.mp3"
 
 function Inital() {
+  const audioRef = useRef(null)
+
+  useEffect(() => {
+    if (audioRef.current) {
+      setTimeout(() => {
+        audioRef.current.play().catch((error) => {
+          console.log("Erro ao reproduzir o áudio:", error)
+        })
+      }, 2000)
+    }
+  }, [])
+
   const handleChangePage = () => {
     document.location.href = "/catalog"
   }
@@ -43,6 +56,8 @@ function Inital() {
       <footer>
         <img src={footerLine} alt="footer-line" />
       </footer>
+
+      <audio ref={audioRef} src={audioFile} muted={false} />
     </div>
   )
 }
