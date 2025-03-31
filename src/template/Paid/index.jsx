@@ -3,7 +3,6 @@ import "./styles.css"
 
 import logo from "../../assets/super-smash-pizza.svg"
 import marioJackson from "../../assets/marioJackson.gif"
-import TranscriptionTool from "../../components/TranscriptionTool"
 
 function Paid() {
   const [username, setUsername] = useState("")
@@ -30,8 +29,6 @@ function Paid() {
       </p>
 
       <img id="mario-jackson" src={marioJackson} alt="mario-jackson-dancing" />
-
-      <TranscriptionTool />
 
       <button onClick={handleCloseOrder}>Fechar</button>
     </div>
