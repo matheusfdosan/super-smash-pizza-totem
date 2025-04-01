@@ -42,7 +42,7 @@ export default function Catalog() {
 
   useEffect(() => {
     if (!localStorage.getItem("sessions")) {
-      localStorage.setItem("sessions", [])
+      localStorage.setItem("sessions", JSON.stringify([]))
     }
 
     if (!JSON.parse(localStorage.getItem("sessions")).includes("catalog")) {
