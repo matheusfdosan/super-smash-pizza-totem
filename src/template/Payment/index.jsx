@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { use, useEffect, useRef, useState } from "react"
 import "./styles.css"
 
 import card from "../../assets/card.svg"
@@ -7,12 +7,13 @@ import money from "../../assets/money.svg"
 
 import logo from "../../assets/super-smash-pizza.svg"
 import audioFile from "../../assets/audios/payment.mp3"
+import ShaoKahnHelper from "../../components/ShaoKahnHelper"
 
 function Payment() {
   const [method, setMethod] = useState("")
   const [total, setTotal] = useState(0)
   const [msg, setMsg] = useState("")
-  const audioRef = useRef(null)
+  const [shaoKahn, setShaoKahn] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -29,6 +30,16 @@ function Payment() {
     }
   }
 
+  const cancelAudio = (opt) => {
+    setShaoKahn(opt)
+    if (!JSON.parse(localStorage.getItem("sessions")).includes("payment")) {
+      localStorage.setItem(
+        "sessions",
+        JSON.stringify(["catalog", "order", "payment"])
+      )
+    }
+  }
+
   useEffect(() => {
     const order = JSON.parse(localStorage.getItem("order"))
 
@@ -40,15 +51,9 @@ function Payment() {
     setTotal(newTotal)
 
     if (!JSON.parse(localStorage.getItem("sessions")).includes("payment")) {
-      localStorage.setItem("sessions", JSON.stringify(["catalog", "order", "payment"]))
-      
-      if (audioRef.current) {
-        setTimeout(() => {
-          audioRef.current.play().catch((error) => {
-            console.log("Erro ao reproduzir o áudio:", error)
-          })
-        }, 2000)
-      }
+      setTimeout(() => {
+        setShaoKahn(true)
+      }, 1000)
     }
   }, [])
 
@@ -144,7 +149,15 @@ function Payment() {
           </div>
         </form>
 
-        <audio ref={audioRef} src={audioFile} muted={false} />
+        {shaoKahn && (
+          <ShaoKahnHelper
+            text={
+              "Adicione seu nome no campo abaixo, e selecione a forma de pagamento. Ou se não, cancele o pedido clicando no botão vermelho."
+            }
+            cancel={cancelAudio}
+            audioF={audioFile}
+          />
+        )}
       </div>
     </>
   )

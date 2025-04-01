@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import "./styles.css"
 
 import logo from "../../assets/super-smash-pizza.svg"
@@ -23,14 +23,22 @@ import Menu from "../../components/Menu"
 import { SelectedItemContext } from "../../utils/SelectedItemContext"
 import Details from "../../components/Details"
 import LittleMessage from "../../components/LittleMessage"
+import ShaoKahnHelper from "../../components/ShaoKahnHelper"
 
 export default function Catalog() {
   const [order, setOrder] = useState("Pizza")
   const [showDetails, setShowDetails] = useState(false)
   const [message, setMessage] = useState(false)
+  const [shaoKahn, setShaoKahn] = useState(false)
 
   const { data } = useContext(SelectedItemContext)
-  const audioRef = useRef(null)
+
+  const cancelAudio = (opt) => {
+    setShaoKahn(opt)
+    if (!JSON.parse(localStorage.getItem("sessions")).includes("catalog")) {
+      localStorage.setItem("sessions", JSON.stringify(["catalog"]))
+    }
+  }
 
   useEffect(() => {
     if (!localStorage.getItem("sessions")) {
@@ -38,16 +46,11 @@ export default function Catalog() {
     }
 
     if (!JSON.parse(localStorage.getItem("sessions")).includes("catalog")) {
-      localStorage.setItem("sessions", JSON.stringify(["catalog"]))
-      
-      if (audioRef.current) {
-        setTimeout(() => {
-          audioRef.current.play().catch((error) => {
-            console.log("Erro ao reproduzir o áudio:", error)
-          })
-        }, 2000)
-      }
+      setTimeout(() => {
+        setShaoKahn(true)
+      }, 1000)
     }
+
   }, [])
 
   const handleAddItem = () => {
@@ -184,7 +187,15 @@ export default function Catalog() {
       {message && <LittleMessage value="Item Adicionado" />}
       {showDetails && <Details isDetailsOn={setShowDetails} />}
 
-      <audio ref={audioRef} src={audioFile} muted={false} />
+      {shaoKahn && (
+        <ShaoKahnHelper
+          text={
+            "Navegue pelo catálogo, escolha o tipo de prato na lista na sua esquerda e, adicione no carrinho clicando no botão azul. E para ver os itens adicionados, clique no carrinho!"
+          }
+          cancel={cancelAudio}
+          audioF={audioFile}
+        />
+      )}
     </div>
   )
 }

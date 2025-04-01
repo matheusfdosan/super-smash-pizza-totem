@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import "./styles.css"
 
 import logo from "../../assets/super-smash-pizza.svg"
@@ -10,17 +10,19 @@ import pizzaBox from "../../assets/pizza-box.svg"
 import footerLine from "../../assets/footer-line.svg"
 import audioFile from "../../assets/audios/initial.mp3"
 
+import ShaoKahnHelper from "../../components/ShaoKahnHelper"
+
 function Inital() {
-  const audioRef = useRef(null)
+  const [shaoKahn, setShaoKahn] = useState(false)
+
+  const cancelAudio = (opt) => {
+    setShaoKahn(opt)
+  }
 
   useEffect(() => {
-    if (audioRef.current) {
-      setTimeout(() => {
-        audioRef.current.play().catch((error) => {
-          console.log("Erro ao reproduzir o áudio:", error)
-        })
-      }, 2000)
-    }
+    setTimeout(() => {
+      setShaoKahn(true)
+    }, 1000)
   }, [])
 
   const handleChangePage = () => {
@@ -57,7 +59,13 @@ function Inital() {
         <img src={footerLine} alt="footer-line" />
       </footer>
 
-      <audio ref={audioRef} src={audioFile} muted={false} />
+      {shaoKahn && (
+        <ShaoKahnHelper
+          text={"Olá, sou o Shao Kahn! Bem-vindo(a) ao Super Smash Pizza, o lar das melhores pizzas do mundo. Clique na pizza para comer aqui ou na caixa para levar o seu pedido ao seu castelo."}
+          cancel={cancelAudio}
+          audioF={audioFile}
+        />
+      )}
     </div>
   )
 }

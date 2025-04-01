@@ -13,12 +13,20 @@ function Paid() {
     const getUsername = localStorage.getItem("username")
     setUsername(getUsername)
 
-    if (audioRef.current) {
-      setTimeout(() => {
-        audioRef.current.play().catch((error) => {
-          console.log("Erro ao reproduzir o áudio:", error)
-        })
-      }, 2000)
+
+    if (!JSON.parse(localStorage.getItem("sessions")).includes("paid")) {
+      if (audioRef.current) {
+        setTimeout(() => {
+          audioRef.current.play().catch((error) => {
+            console.log("Erro ao reproduzir o áudio:", error)
+          })
+        }, 1000)
+
+        localStorage.setItem(
+          "sessions",
+          JSON.stringify(["catalog", "order", "payment", "paid"])
+        )
+      }
     }
   }, [])
 
@@ -42,6 +50,12 @@ function Paid() {
       <img id="mario-jackson" src={marioJackson} alt="mario-jackson-dancing" />
 
       <button onClick={handleCloseOrder}>Fechar</button>
+      <button
+        id="see-order"
+        onClick={() => (document.location.href = "/order")}
+      >
+        Ver Pedido
+      </button>
 
       <audio ref={audioRef} src={audioFile} muted={false} />
     </div>

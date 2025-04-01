@@ -8,7 +8,7 @@
 }
 
 #paid-page > img {
-  width: 20rem;
+  width: 15rem;
   display: block;
   padding: 2rem 0;
   margin: auto;
@@ -54,4 +54,9 @@
   color: var(--select-price-color);
   cursor: pointer;
   transition: transform 200ms ease;
+}
+
+#paid-page > button#see-order {
+  border-color: var(--border-text-color);
+  color: var(--border-text-color);
 }

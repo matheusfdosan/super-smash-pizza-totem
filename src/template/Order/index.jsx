@@ -1,13 +1,22 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./styles.css"
 import logo from "../../assets/super-smash-pizza.svg"
 import OnCart from "../../components/OnCart"
 import audioFile from "../../assets/audios/order.mp3"
+import ShaoKahnHelper from "../../components/ShaoKahnHelper"
 
 function Order() {
   const [items, setItems] = useState([])
   const [total, setTotal] = useState(0)
-  const audioRef = useRef(null)
+  const [shaoKahn, setShaoKahn] = useState(false)
+  const [paid, setPaid] = useState(false)
+
+  const cancelAudio = (opt) => {
+    setShaoKahn(opt)
+    if (!JSON.parse(localStorage.getItem("sessions")).includes("order")) {
+      localStorage.setItem("sessions", JSON.stringify(["catalog", "order"]))
+    }
+  }
 
   const parsePrice = (price) => {
     const parsed = Number(price.replace("R$ ", "").replace(",", "."))
@@ -24,21 +33,21 @@ function Order() {
 
     const initialTotal = storedOrder.reduce((acc, item) => {
       const price = parsePrice(item.price)
-      console.log(price)
       return acc + price
     }, 0)
     setTotal(initialTotal)
 
     if (!JSON.parse(localStorage.getItem("sessions")).includes("order")) {
-      localStorage.setItem("sessions", JSON.stringify(["catalog", "order"]))
-      
-      if (audioRef.current) {
-        setTimeout(() => {
-          audioRef.current.play().catch((error) => {
-            console.log("Erro ao reproduzir o áudio:", error)
-          })
-        }, 2000)
-      }
+      setTimeout(() => {
+        setShaoKahn(true)
+      }, 1000)
+    }
+
+    if (
+      localStorage.getItem("username") &&
+      localStorage.getItem("username").trim() !== ""
+    ) {
+      setPaid(true)
     }
   }, [])
 
@@ -67,7 +76,15 @@ function Order() {
       <header>
         <img src={logo} alt="logo" />
         <h2>Seu Pedido</h2>
-        <button onClick={() => (document.location.href = "/catalog")}>
+        <button
+          onClick={() => {
+            if (paid) {
+              document.location.href = "/paid"
+            } else {
+              document.location.href = "/catalog"
+            }
+          }}
+        >
           Voltar
         </button>
       </header>
@@ -102,11 +119,19 @@ function Order() {
               })}
             </p>
           </div>
-          <button onClick={handlePayment}>Pagar</button>
+          {!paid && <button onClick={handlePayment}>Pagar</button>}
         </div>
       </footer>
 
-      <audio ref={audioRef} src={audioFile} muted={false} />
+      {shaoKahn && (
+        <ShaoKahnHelper
+          text={
+            "No carrinho você terá acesso a todos os itens pedidos. Clique no botão vermelho para apagar ou no botão verde para finalizar o pedido."
+          }
+          cancel={cancelAudio}
+          audioF={audioFile}
+        />
+      )}
     </div>
   )
 }

@@ -1,0 +1,137 @@
+#shao-kahn-helper-page {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  font-family: var(--pixelify-sans);
+  left: 0;
+  background-color: #000000a1;
+  animation: retroSpawn 0.4s ease-in;
+}
+
+#shao-kahn-helper-page > h1 {
+  font-size: 4rem;
+  color: var(--border-text-color);
+  margin: 4rem;
+}
+
+#shao-kahn-helper-page > div {
+  position: absolute;
+  bottom: 15rem;
+  left: 3rem;
+  width: 50%;
+  z-index: 1;
+}
+
+#shao-kahn-helper-page > div > p {
+  font-size: 4rem;
+  text-align: left;
+  color: var(--border-text-color);
+  color: var(--desc-payment-color);
+  animation: fadeIn 1s ease backwards;
+  margin-bottom: 8rem;
+}
+
+#shao-kahn-helper-page > img {
+  width: 50rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  animation: fromBottom 1s 200ms ease backwards;
+}
+
+#shao-kahn-helper-page > div > button {
+  background-color: transparent;
+  border: none;
+  padding: 2rem;
+  cursor: pointer;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+#shao-kahn-helper-page > div > button > img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  width: 6rem;
+}
+
+#shao-kahn-helper-page > div > button > span {
+  font-size: 6rem;
+  color: #818181;
+  font-family: var(--pixelify-sans);
+}
+
+#shao-kahn-helper-page > div > button:hover {
+  filter: brightness(9);
+}
+
+#close-shao {
+  border: var(--dashed-border);
+  font-family: var(--pixelify-sans);
+  font-size: 2.4rem;
+  padding: 0.5rem 1.8rem;
+  background-color: transparent;
+  color: var(--border-text-color);
+  cursor: pointer;
+  transition: transform 200ms ease;
+  font-size: 4.5rem;
+  border-width: .5rem;
+  opacity: 0.8;
+  border-color: var(--cancel-remove-color);
+  color: var(--cancel-remove-color);
+  position: absolute;
+  top: 3rem;
+  right: 4rem;
+  transition: opacity 200ms ease;
+}
+
+#close-shao:hover {
+  opacity: 1;
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes fromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes retroSpawn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(20px);
+    filter: blur(2px) brightness(1.5); /* Brilho inicial como em teletransporte */
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1) translateY(-5px);
+    filter: blur(0) brightness(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: none;
+  }
+}
